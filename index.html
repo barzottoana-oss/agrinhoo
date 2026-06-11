@@ -3,19 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Agrinho - Inovação e Sustentabilidade</title>
+    <title>Projeto Agrinho - Semeando Futuro</title>
     <style>
-        /* --- VARIÁVEIS E CONFIGURAÇÕES GERAIS --- */
-        :root {
-            --verde-principal: #2e7d32;
-            --verde-claro: #4caf50;
-            --terra: #8d6e63;
-            --amarelo-sol: #ffb300;
-            --branco: #ffffff;
-            --gelo: #f5f5f5;
-            --grafite: #212121;
-        }
-
+        /* RESET DE ESTILOS */
         * {
             margin: 0;
             padding: 0;
@@ -23,40 +13,129 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        /* CORPO DA PÁGINA COM IMAGEM DE FUNDO */
         body {
-            background-color: var(--gelo);
-            color: var(--grafite);
-            overflow-x: hidden;
-        }
-
-        /* --- TELA DE CARREGAMENTO (PORCENTAGEM) --- */
-        #loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: var(--verde-principal);
-            z-index: 9999;
+            /* Substitua o link abaixo por outra imagem de campo se preferir */
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
+            color: #ffffff;
+            padding: 20px;
         }
 
-        #loader h2 {
-            color: var(--branco);
-            margin-bottom: 20px;
-            font-size: 2rem;
-            letter-spacing: 2px;
+        /* CARD CENTRALIZADO */
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 650px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.5s ease-in-out;
         }
 
-        .counter-container {
-            font-size: 4rem;
+        /* TÍTULO */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #4caf50; /* Verde Agrinho */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* TEXTO */
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #f0f0f0;
+        }
+
+        /* SEÇÃO DA PORCENTAGEM CRIATIVA */
+        .stats-container {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #8bc34a;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .percentage {
+            font-size: 3.5rem;
             font-weight: bold;
-            color: var(--amarelo-sol);
+            color: #8bc34a;
+            display: block;
+            margin-bottom: 5px;
         }
 
-        .progress-bar-bg {
-            width:
+        .stats-text {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ddd;
+        }
+
+        /* ANIMAÇÃO DE ENTRADA */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVIDADE PARA CELULARES */
+        @media (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            p { font-size: 1rem; }
+            .percentage { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <h1>Projeto Agrinho</h1>
+        <p>
+            Cultivando o saber e colhendo cidadania. O Projeto Agrinho transforma a realidade de milhares de jovens, conectando a educação formal às práticas sustentáveis do campo, promovendo a preservação ambiental e a inovação no ecossistema agrícola.
+        </p>
+
+        <div class="stats-container">
+            <span class="percentage" id="contador">0%</span>
+            <span class="stats-text">dos alunos participantes desenvolvem maior consciência ambiental e social</span>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const numContador = document.getElementById("contador");
+            const metaPorcentagem = 95; // Mude aqui o valor da porcentagem se quiser
+            let valorAtual = 0;
+            
+            // Velocidade da animação (quanto menor o número, mais rápido)
+            const tempo = 20; 
+
+            const animacao = setInterval(() => {
+                if (valorAtual >= metaPorcentagem) {
+                    clearInterval(animacao);
+                } else {
+                    valorAtual++;
+                    numContador.textContent = valorAtual + "%";
+                }
+            }, tempo);
+        });
+    </script>
+
+</body>
+</html>
